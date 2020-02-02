@@ -1,3 +1,4 @@
+# puppet cron deploys a cronjob to automate puppet runs
 class puppetcron {
   file { '/usr/local/bin/run-puppet':
     ensure => link,
