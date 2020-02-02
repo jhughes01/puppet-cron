@@ -1,7 +1,7 @@
 class puppetcron {
-  file { '/etc/puppetlabs/code/environments/production/scripts/run-puppet.sh':
+  file { '/usr/local/bin/run-puppet':
     ensure => link,
-    target => '/usr/local/bin/run-puppet',
+    target => '/etc/puppetlabs/code/environments/production/scripts/run-puppet.sh',
   }
 
   cron { 'run-puppet':
