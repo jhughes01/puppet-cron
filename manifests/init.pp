@@ -1,4 +1,4 @@
-class puppet-cron {
+class puppetcron {
   file { '/usr/local/bin/run-puppet':
     source => '/etc/puppetlabs/code/environments/production/scripts/run-puppet.sh',
     ensure => link,
