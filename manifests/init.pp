@@ -6,7 +6,7 @@ class puppetcron {
   }
 
   cron { 'run-puppet':
-    command => '/usr/local/bin/run-puppet &>> /var/log/puppet-cron.log',
+    command => 'bash /usr/local/bin/run-puppet &>> /var/log/puppet-cron.log',
     hour    => '*',
     minute  => '*/15',
   }
