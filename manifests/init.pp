@@ -1,13 +1,17 @@
 # puppet cron deploys a cronjob to automate puppet runs
 class puppetcron {
   file { '/usr/local/bin/run-puppet':
-    ensure => link,
-    target => '/etc/puppetlabs/code/environments/production/scripts/run-puppet.sh',
+    ensure => present,
+    source => 'puppet:///modules/puppetcron/run-puppet.sh',
+  }
+
+  package { 'moreutils':
+    ensure => 'present'
   }
 
   cron { 'run-puppet':
-    command => '/bin/bash /usr/local/bin/run-puppet &>> /var/log/puppet-cron.log',
+    command => '/bin/bash /usr/local/bin/run-puppet | ts &>> /var/log/puppet-cron.log',
     hour    => '*',
-    minute  => '*/15',
+    minute  => '*/10',
   }
 }
