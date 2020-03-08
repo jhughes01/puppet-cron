@@ -2,6 +2,7 @@
 class puppetcron {
   file { '/usr/local/bin/run-puppet':
     ensure => present,
+    mode   => '0755',
     source => 'puppet:///modules/puppetcron/run-puppet.sh',
   }
 
